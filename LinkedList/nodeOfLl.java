@@ -19,8 +19,9 @@ public class nodeOfLl {
         c.next = d;
         d.next = e;
 
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(a.next);
+        System.out.println(a); //will return LinkedList.Node@28a418fc
+        System.out.println(b); //will return LinkedList.Node@5305068a
+        System.out.println(a.next); //will return LinkedList.Node@5305068a. This proves that a.next == b.
+        
     }
 }
