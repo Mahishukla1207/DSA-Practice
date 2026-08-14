@@ -12,9 +12,12 @@ public class DisplayLLRec {
         if(head == null){
             return;
         }
+            // System.out.print(head.val + " ");
+            // displayRec(head.next); //will print the linked list in order
+
+            displayRec(head.next); //to print linkedlist in reverse order
             System.out.print(head.val + " ");
-            displayRec(head.next);
-    }
+        }
     public static void display(Node head){
         Node temp = head;
         while(temp != null){
