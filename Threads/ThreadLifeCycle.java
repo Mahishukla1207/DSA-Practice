@@ -8,7 +8,7 @@ public class ThreadLifeCycle{
 
         Thread t1 = new Thread(() -> {
             System.out.println("Name of new thread is:" + Thread.currentThread().getName());
-            System.out.println("Main thread state is:" + mainThread.getState());
+            System.out.println("Main thread state is:" + mainThread.getState()); //will print TIMED_WAITING
         });
         // t1.start();
         System.out.println(t1.getState());
