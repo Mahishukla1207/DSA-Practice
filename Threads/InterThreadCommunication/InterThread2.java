@@ -6,20 +6,20 @@ public class InterThread2{
         Thread t1 = new Thread(() -> {
             for(int i = 0; i <= 20; i++){
                 try{
+                    Thread.sleep(100);
                     box.Producer(i);
                 } catch(InterruptedException e){
-                    Thread.currentThread().interrupt();
-                    return;
+                    
                 }
             }
         });
         Thread t2 = new Thread(() -> {
             for(int i = 0; i <= 20; i++){
                 try{
+                    Thread.sleep(100);
                     box.Consumer();
                 } catch(InterruptedException e){
-                    Thread.currentThread().interrupt();
-                    return;
+                    
                 }
             }
         });
@@ -29,23 +29,29 @@ public class InterThread2{
 }
 
 class FlagBox{
-    private Integer item;
+    volatile Integer item;
+    volatile Boolean flag = false;
+
 
     synchronized void Producer(int value) throws InterruptedException{
-        while(item != null){
+        while(flag == true){
             wait();
         }
         item = value;
+        flag = true;
         System.out.println("Producer produces" + item);
-        notifyAll();
+        notify();
+        // notifyAll();
     }
 
     synchronized void Consumer() throws InterruptedException{
-        while(item == null){
+        while(flag == false){
             wait();
         }
         System.out.println("Consumer consumes" + item);
         item = null;
-        notifyAll();
+        flag = false;
+        notify();
+        // notifyAll();
     }
 }
