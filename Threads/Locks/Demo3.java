@@ -1,4 +1,4 @@
- import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 public class Demo3 {
     public static void main(String[] args){
